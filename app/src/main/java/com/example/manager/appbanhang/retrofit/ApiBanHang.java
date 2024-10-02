@@ -4,6 +4,7 @@ import com.example.manager.appbanhang.Model.DonHangModel;
 import com.example.manager.appbanhang.Model.LoaiSpModel;
 import com.example.manager.appbanhang.Model.MauSanPhamModel;
 import com.example.manager.appbanhang.Model.MessageModel;
+import com.example.manager.appbanhang.Model.ThongKeModel;
 import com.example.manager.appbanhang.Model.UserModel;
 
 import io.reactivex.rxjava3.core.Observable;
@@ -22,6 +23,8 @@ public interface ApiBanHang {
 
     @GET("getmausp.php")
     Observable<MauSanPhamModel> getMauSp();
+    @GET("thongke.php")
+    Observable<ThongKeModel> getthongke();
 
     @POST("chitiet.php")
     @FormUrlEncoded

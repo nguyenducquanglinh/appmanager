@@ -2,6 +2,7 @@ package com.example.manager.appbanhang.Activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -40,6 +41,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ThemSPActivity extends AppCompatActivity {
+    Toolbar toolbar;
     Spinner spinner;
     int loai=0;
     ActivityThemspBinding binding;
@@ -57,6 +59,7 @@ public class ThemSPActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initView();
         initData();
+        ActionToolBar();
         Intent intent =getIntent();
         sanPhamSua = (MauSanPham) intent.getSerializableExtra("sua");
         if (sanPhamSua == null){
@@ -74,6 +77,18 @@ public class ThemSPActivity extends AppCompatActivity {
             binding.spinnerLoai.setSelection(sanPhamSua.getLoai());
 
         }
+    }
+
+    private void ActionToolBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+
+            }
+        });
     }
 
     private void initData() {
@@ -233,6 +248,7 @@ public class ThemSPActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        toolbar = findViewById(R.id.toobar);
         spinner = findViewById(R.id.spinner_loai);
     }
 

@@ -2,6 +2,7 @@ package com.example.manager.appbanhang.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,7 @@ public class QuanliActivity extends AppCompatActivity {
     List<MauSanPham> list;
     MauSanPhamAdapter adapter;
     MauSanPham sanPhamSuaXoa;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,23 @@ public class QuanliActivity extends AppCompatActivity {
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
         initView();
         initControl();
+        ActionToolBar();
         getMauSp();
+
+    }
+
+    private void ActionToolBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuanliActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP); // Cờ để không tạo lại MainActivity
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void initControl() {
@@ -61,6 +79,7 @@ public class QuanliActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        toolbar = findViewById(R.id.toobar);
         img_them = findViewById(R.id.img_them);
         recyclerView = findViewById(R.id.recycleview_ql);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

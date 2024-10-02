@@ -71,6 +71,8 @@ dependencies {
     implementation ("com.github.fornewid:neumorphism:0.3.2")
     //image pick
     implementation ("com.github.dhaval2404:imagepicker:2.1")
+    // chart
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 }
 
