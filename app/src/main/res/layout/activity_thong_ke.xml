@@ -21,6 +21,14 @@
         app:layout_constraintTop_toBottomOf="@+id/toobar"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
+    <com.github.mikephil.charting.charts.BarChart
+        android:visibility="gone"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toobar"
+        android:id="@+id/barchart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
